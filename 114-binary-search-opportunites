@@ -8,7 +8,7 @@ public static Integer binarySearch(List<opportunity> opportunities, Integer star
     }
     Integer mid = (start + last)/2;
     if(opportunities.get(mid).amount == target) {
-        retrun mid;
+        return mid;
     } else if(opportunities.get(mid).amount < target) {
         return binarySearch(opportunities, mid + 1, last, target);
     }
