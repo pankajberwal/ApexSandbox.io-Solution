@@ -1,0 +1,16 @@
+public void plusOne(List<Integer> numbers) {
+    Integer size = numbers.size() - 1;
+    Integer carry = 1, temp;
+    for(Integer value = size; value >= 0; value--) {
+        temp = numbers.get(value) + carry;
+        if(temp > 9) {
+            carry = temp - 9;
+        } else {
+            carry = 0;
+        }
+        numbers.set(value , Math.mod(temp, 10));
+    }
+    if(carry != 0) {
+        numbers.add(0, carry);
+    }
+}
