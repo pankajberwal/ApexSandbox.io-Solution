@@ -1,0 +1,16 @@
+public static Integer search(List<Opportunity> opportunities, Integer target){
+    return binarySearch(opportunities, 0, opportunities.size() - 1, target);
+}
+
+public static Integer binarySearch(List<opportunity> opportunities, Integer start, Integer last, Integer target) {
+    if(start > last) {
+        return -1;
+    }
+    Integer mid = (start + last)/2;
+    if(opportunities.get(mid).amount == target) {
+        retrun mid;
+    } else if(opportunities.get(mid).amount < target) {
+        return binarySearch(opportunities, mid + 1, last, target);
+    }
+    return binarySearch(opportunities, start, mid - 1, target);
+}
