@@ -1,10 +1,89 @@
 public class LinkedList{
+    Node head;
+    Integer size;
     
-    public void addToFront(Integer value){}
-    public Integer removeFromFront(){}
-    public void addToTail(Integer value){}
-    public Integer removeFromTail(){}
-    public Integer size(){}    
+    public LinkedList() {
+        this.head = null;
+        this.size = 0;
+    }
+    
+    public void addToFront(Integer data) {
+        if(this.head != null) {
+            Node node = new Node();
+            node.data = data;
+            node.next = this.head;
+            this.head = node;
+        } else {
+            Node node = new Node();
+            node.data = data;
+            node.next = null;
+            this.head = node;
+        }
+        this.size++;
+    }
+    
+    public void addToTail(Integer value){
+        Node start = head;
+        while(start != null && start.next != null) {
+            start = start.next;
+        }
+        Node node = new Node();
+        node.data = value;
+        if(this.size > 0) {
+            start.next = node;
+        } else {
+            this.head = node;
+        }
+        
+        this.size++;
+    }
+    
+    public Integer removeFromTail(){
+        Node start = head;
+        Integer result;
+        if(this.size > 1) {
+            while(start.next != null && start.next.next != null) {
+                start = start.next;
+            }
+            result = start.next.data;
+            start.next = null;
+            this.size--;
+        } else {
+            if(this.head == null) {
+                result = null;
+            } else {
+                result = this.head.data;
+                this.head = null;
+            }
+            this.size = 0;
+        }
+        
+        return result;
+    }
+    
+    public Integer removeFromFront(){
+        if(size > 0) {
+            Integer result = this.head.data;
+            this.head = this.head.next;
+            this.size--;
+            return result;
+        }
+        System.debug('No Elements are there');
+        return null;
+    }
+    
+    public void printList() {
+        Node start = this.head;
+        while(start != null) {
+            System.debug(start.data);
+            start = start.next;
+        }
+    }
+    
+    public Integer size(){
+        System.debug('List Size is : '+this.size);
+        return this.size;
+    }    
 }
 
 public class Node{
