@@ -1,0 +1,12 @@
+public Boolean isPalindrome(String str){
+    
+    String str1 = str.replaceAll('[^a-zA-Z0-9]', '');
+    List<String> strList = str1.split('');
+    Integer size = strList.size();
+    for(Integer i = 0; i < size/2; i++) {
+        if(strList.get(i) != strList.get(size - i -1)) {
+            return false;
+        }
+    }
+    return true;
+}
